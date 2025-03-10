@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+
 function NavHeader() {
   const [position, setPosition] = useState({
     left: 0,
