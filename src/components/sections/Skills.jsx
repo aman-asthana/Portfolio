@@ -136,7 +136,6 @@ const Skills = () => {
                           <span className="text-sm text-gray-500"></span>
                           <div className="h-1.5 w-80 bg-gray-800 rounded-full overflow-hidden">
                             <motion.div
-                            
                               initial={{ width: '100%' }}
                               whileInView={{ width: '100%' }}
                               viewport={{ once: true }}
