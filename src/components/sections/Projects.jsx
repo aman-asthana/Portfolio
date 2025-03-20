@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Timeline } from "../ui/timeline";
-import { FaGithub, FaExternalLinkAlt, FaTrophy, FaCertificate } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaCertificate } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ProjectModal from "../ui/ProjectModal";
 
@@ -10,18 +10,18 @@ export function Projects() {
   // Add image arrays for each project
   const projectImages = {
     expenseTrade: [
-      "./src/components/media/Expensetrade.png",
-      "./src/components/media/Expensetrade2.png",
-      "./src/components/media/Expensetrade3.png"
+      "/public/media/Expensetrade.png",
+      "/public/media/Expensetrade2.png",
+      "/public/media/Expensetrade3.png"
     ],
     portfolio: [
-      "./src/components/media/portfolio1.png",
-      "./src/components/media/portfolio2.png"
+      "/public/media/portfolio1.png",
+      "/public/media/portfolio2.png"
     ],
     agripro: [
-      "./src/components/media/agripro.png",
-      "./src/components/media/agripro2.png",
-      "./src/components/media/agripro3.png"
+      "/public/media/agripro.png",
+      "/public/media/agripro2.png",
+      "/public/media/agripro3.png"
     ],
     // Add more project images as needed
   };
@@ -31,7 +31,7 @@ export function Projects() {
       title: "Java Programming",
       issuer: "NPTEL",
       date: "2025",
-      image: "./src/components/media/certificates/webdev.jpg",
+      image: "/public/certificates/webdev.jpg",
       credential: "UC-XXX123"
     },
     
@@ -39,14 +39,14 @@ export function Projects() {
       title: "Database and Management System",
       issuer: "NPTEL",
       date: "2024",
-      image: "./src/components/media/certificates/DBMS.jpg",
+      image: "/public/certificates/DBMS.jpg",
       credential: "CR-XXX456"
     },
     {
       title: "React.js",
       issuer: "Infosys Spring board",
       date: "2025",
-      image: "./src/components/media/certificates/ReactJs.jpg",
+      image: "/public/certificates/ReactJs.jpg",
       credential: "CR-XXX456"
     },
     // Add more certificates as needed
@@ -101,7 +101,7 @@ export function Projects() {
                 <div className="relative h-48 rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 opacity-20 group-hover:opacity-30 transition-opacity " />
                   <img 
-                    src="./src/components/media/Expensetrade.png" 
+                    src="/public/Expensetrade.png" 
                     alt="Expense Trade Preview" 
                     className="w-full h-full object-fit"
                   />
@@ -139,7 +139,7 @@ export function Projects() {
               <div className="relative h-48 rounded-lg overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-500 opacity-20 group-hover:opacity-30 transition-opacity" />
                 <img 
-                  src="./src/components/media/agripro.png" 
+                  src="/public/agripro.png" 
                   alt="AgriPro Preview" 
                   className="w-full h-full object-cover"
                 />
@@ -223,7 +223,7 @@ export function Projects() {
     //           <div className="relative h-48 rounded-lg overflow-hidden">
     //             <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-500 opacity-20 group-hover:opacity-30 transition-opacity" />
     //             <img 
-    //               src="./src/components/media/weather.png" 
+    //               src="/public/weather.png" 
     //               alt="Weather App Preview" 
     //               className="w-full h-full object-cover"
     //             />
@@ -260,7 +260,7 @@ export function Projects() {
     //           <div className="relative h-48 rounded-lg overflow-hidden">
     //             <div className="absolute inset-0 bg-gradient-to-br from-rose-500 to-pink-500 opacity-20 group-hover:opacity-30 transition-opacity" />
     //             <img 
-    //               src="./src/components/media/taskmanager.png" 
+    //               src="/public/taskmanager.png" 
     //               alt="Task Manager Preview" 
     //               className="w-full h-full object-cover"
     //             />
