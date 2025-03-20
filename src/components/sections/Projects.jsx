@@ -31,7 +31,7 @@ export function Projects() {
       title: "Java Programming",
       issuer: "NPTEL",
       date: "2025",
-      image: "/media/certificates/webdev.jpg",
+      image: "/media/certificates/Java.jpg",
       credential: "UC-XXX123"
     },
     
