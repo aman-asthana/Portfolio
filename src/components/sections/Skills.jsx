@@ -43,17 +43,7 @@ const Skills = () => {
         { icon: SiMongodb, name: 'MongoDB', color: '#47A248', level: 'Basic' },
       ]
     },
-    {
-      title: "DSA & Problem Solving",
-      gradient: "from-yellow-500 to-orange-500",
-      skills: [
-        { icon: BiData, name: 'Data Structures', color: '#FF6B6B', level: 'Advanced' },
-        { icon: FaCode, name: 'Algorithms', color: '#4CAF50', level: 'Advanced' },
-        { icon: SiLeetcode, name: 'LeetCode', color: '#FFA116', level: 'Advanced' },
-        { icon: SiGeeksforgeeks, name: 'GeeksforGeeks', color: '#2F8D46', level: 'Advanced' },
-        { icon: SiHackerrank, name: 'HackerRank', color: '#00EA64', level: 'Advanced' },
-      ]
-    }
+    
   ];
 
   const containerVariants = {
@@ -115,7 +105,7 @@ const Skills = () => {
                 
                 <InfiniteSlider 
                   gap={24} 
-                  className="w-full h-[180px] bg-[#0A0A0A] flex items-center"
+                  className="w-full h-[180px]  flex items-center"
                   duration={25}
                   durationOnHover={50}
                   reverse={categoryIndex % 2 === 1}

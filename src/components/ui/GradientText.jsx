@@ -11,7 +11,7 @@ export default function GradientText({
 
   return (
     <div
-      className={`relative mx-auto flex max-w-fit flex-row items-center justify-center ${showBorder ? 'p-1' : ''} transition-all duration-500 hover:scale-[1.02] ${className}`}
+      className={`relative flex max-w-fit flex-row items-center justify-center ${showBorder ? '' : ''} transition-all duration-500 hover:scale-[1.02] ${className}`}
     >
       
       <div

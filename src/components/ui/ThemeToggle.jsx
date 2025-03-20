@@ -1,44 +1,57 @@
 "use client";
 
-import { Toggle } from "./toggle";
+import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
-import { useState } from "react";
+import { Toggle } from "./toggle";
+import { useTheme } from "../../context/ThemeContext";
 
-function ThemeToggle({ onThemeChange }) {
-  const [theme, setTheme] = useState("light");
-
-  const handleThemeChange = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    if (onThemeChange) {
-      onThemeChange(newTheme);
-    }
-  };
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="fixed top-6 right-6 z-50">
+    <motion.div 
+      className="fixed top-6 right-6 z-[100]"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <Toggle
         variant="outline"
-        className="group size-9 data-[state=on]:bg-transparent data-[state=on]:hover:bg-muted border-white/20"
+        className={`group size-10 rounded-full backdrop-blur-md border transition-all duration-300
+          ${theme === 'dark' 
+            ? 'bg-white/10 border-white/20 hover:bg-white/20' 
+            : 'bg-black/10 border-black/20 hover:bg-black/20'
+          }`}
         pressed={theme === "dark"}
-        onPressedChange={handleThemeChange}
+        onPressedChange={toggleTheme}
         aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       >
-        <Moon
-          size={16}
-          strokeWidth={2}
-          className="shrink-0 scale-0 text-white opacity-0 transition-all group-data-[state=on]:scale-100 group-data-[state=on]:opacity-100"
-          aria-hidden="true"
-        />
-        <Sun
-          size={16}
-          strokeWidth={2}
-          className="absolute shrink-0 scale-100 text-white opacity-100 transition-all group-data-[state=on]:scale-0 group-data-[state=on]:opacity-0"
-          aria-hidden="true"
-        />
+        <motion.div
+          initial={false}
+          animate={{ 
+            rotate: theme === "dark" ? 360 : 0,
+            scale: 1
+          }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="w-full h-full flex items-center justify-center"
+        >
+          {theme === "dark" ? (
+            <Moon
+              size={18}
+              className={`transition-all duration-300 group-hover:scale-110
+                ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+            />
+          ) : (
+            <Sun
+              size={18}
+              className={`transition-all duration-300 group-hover:scale-110
+                ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+            />
+          )}
+        </motion.div>
       </Toggle>
-    </div>
+    </motion.div>
   );
-}
+};
 
 export default ThemeToggle; 
