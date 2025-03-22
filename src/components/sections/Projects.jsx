@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Timeline } from "../ui/timeline";
 import { FaGithub, FaExternalLinkAlt, FaCertificate } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ProjectModal from "../ui/ProjectModal";
+import { useScrollAnimation, fadeInUp, fadeInRight } from '../../utils/animations';
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [ref, controls] = useScrollAnimation();
   
   // Add image arrays for each project
   const projectImages = {
@@ -72,7 +74,14 @@ export function Projects() {
       title: "Featured Projects",
       content: (
         <div>
+          <motion.section
+              ref={ref}
+              initial="hidden"
+              animate={controls}
+              variants={fadeInRight}
+            >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
             <ProjectCard 
               title="Expense Trade"
               images={projectImages.expenseTrade}
@@ -148,6 +157,7 @@ export function Projects() {
           </ProjectCard>
             
           </div>
+          </motion.section>
         </div>
       ),
     },
@@ -284,6 +294,12 @@ export function Projects() {
               <FaCertificate size={24} className="text-cyan-400" />
               <h3 className="text-xl font-bold text-white">Certificates</h3>
             </div>
+              <motion.section
+              ref={ref}
+              initial="hidden"
+              animate={controls}
+              variants={fadeInUp}
+            >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {certificates.map((cert, index) => (
                 <motion.div
@@ -316,6 +332,7 @@ export function Projects() {
                 </motion.div>
               ))}
             </div>
+              </motion.section>
           </motion.div>
         </div>
       ),
@@ -323,7 +340,14 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="relative z-10 min-h-screen py-20 px-4">
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={fadeInUp}
+      id="projects"
+      className="relative z-10 py-20 px-4"
+    >
       <div className="container mx-auto">
         <div className="w-full">
           <Timeline data={projects} />
@@ -336,6 +360,6 @@ export function Projects() {
           title={selectedProject?.title || ''}
         />
       </div>
-    </section>
+    </motion.section>
   );
 }

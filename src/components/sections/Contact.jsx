@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
+import { useScrollAnimation, fadeInUp } from '../../utils/animations';
 
 export default function Contact() {
   const form = useRef();
@@ -59,8 +60,17 @@ export default function Contact() {
     }));
   };
 
+  const [ref, controls] = useScrollAnimation();
+
   return (
-    <section id="contact" className="relative z-10 py-16 sm:py-20 px-4">
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={fadeInUp}
+      id="contact"
+      className="relative z-10 py-16 sm:py-20 px-4"
+    >
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -74,7 +84,7 @@ export default function Contact() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-rose-400 to-cyan-400 mx-auto rounded-full mb-6 sm:mb-8" />
           <p className="text-gray-400 max-w-2xl mx-auto px-4 text-sm sm:text-base">
-            Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to discussing new projects and opportunities.
+            Have a project in mind or want to collaborate? Feel free to reach out. I&apos;m always open to discussing new projects and opportunities.
           </p>
         </motion.div>
 
@@ -246,6 +256,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

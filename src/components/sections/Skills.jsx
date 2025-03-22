@@ -1,13 +1,14 @@
-import React from 'react'
 import { motion } from 'framer-motion';
 import { InfiniteSlider } from '../ui/infinite-slider';
-import { FaReact, FaDatabase, FaNodeJs, FaJava, FaPython, FaJs, FaHtml5, FaCss3, FaGitAlt, FaBootstrap, FaCode } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaJava, FaPython, FaJs, FaHtml5, FaCss3, FaGitAlt, FaBootstrap} from 'react-icons/fa';
 import { TbBrandDjango, TbBrandCpp } from "react-icons/tb";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { SiC, SiMysql, SiPostgresql, SiMongodb, SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
-import { BiData } from "react-icons/bi";
+import { SiC, SiMysql, SiPostgresql, SiMongodb} from "react-icons/si";
+import { useScrollAnimation, fadeInUp } from '../../utils/animations';
 
 const Skills = () => {
+  const [ref, controls] = useScrollAnimation();
+
   const skillCategories = [
     {
       title: "Programming Languages",
@@ -30,6 +31,7 @@ const Skills = () => {
         { icon: FaCss3, name: 'CSS', color: '#1572B6', level: 'Advanced' },
         { icon: RiTailwindCssFill, name: 'TailwindCSS', color: '#06B6D4', level: 'Intermediate' },
         { icon: FaBootstrap, name: 'Bootstrap', color: '#7952B3', level: 'Intermediate' },
+        { icon: FaGitAlt, name: 'Git', color: '#E34F26', level: 'Intermediate' },
       ]
     },
     {
@@ -46,29 +48,15 @@ const Skills = () => {
     
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
   return (
-    <section id="skills" className="relative z-10 min-h-screen py-20">
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={fadeInUp}
+      id="skills"
+      className="relative z-10 py-20 px-4"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -143,7 +131,7 @@ const Skills = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

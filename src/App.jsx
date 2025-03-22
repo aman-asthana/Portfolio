@@ -1,4 +1,3 @@
-
 import { AnimatePresence } from 'framer-motion';
 import NavHeader from './components/ui/navHeader';
 import { Vortex } from './components/ui/vortex';
@@ -10,13 +9,22 @@ import { Projects } from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
 import { ThemeProvider } from './context/ThemeContext';
-
-
-
-
+import { motion } from 'framer-motion';
 
 function AppContent() {
   const isLoading = useLoader();
+
+  
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
   return (
     <>
@@ -24,10 +32,13 @@ function AppContent() {
         {isLoading && <Loader />}
       </AnimatePresence>
 
-      <div 
+      <motion.div 
         className={`relative min-h-screen transition-all duration-300 ${
           isLoading ? 'opacity-0' : 'opacity-100'
         }`}
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
       >
         <div className="relative min-h-screen transition-colors duration-300 bg-black overflow-x-hidden">
           <Vortex
@@ -56,7 +67,7 @@ function AppContent() {
             <Footer />
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

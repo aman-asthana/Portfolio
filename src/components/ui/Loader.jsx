@@ -4,6 +4,7 @@ import { trefoil } from 'ldrs';
 
 trefoil.register();
 
+// Custom hook for loading state
 export const useLoader = () => {
   const [loading, setLoading] = useState(true);
   const [componentsLoaded, setComponentsLoaded] = useState(false);
@@ -63,13 +64,14 @@ export const useLoader = () => {
   return loading;
 };
 
-export default function Loader() {
+// Loader component
+const Loader = () => {
   return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 flex flex-col items-center justify-center bg-black"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
     >
       <motion.div 
         className="relative"
@@ -91,9 +93,9 @@ export default function Loader() {
           speed="0.1" 
           color="cyan"
         />
-        
       </motion.div>
-      
     </motion.div>
   );
-}
+};
+
+export default Loader;
